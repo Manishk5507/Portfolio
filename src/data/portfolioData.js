@@ -32,6 +32,7 @@ export const portfolioData = {
     { name: "Responsibility", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Education", href: "#education" },
+    { name: "Timeline", href: "#timeline" },
     { name: "Contact", href: "#contact" }
   ],
 
@@ -115,7 +116,7 @@ export const portfolioData = {
         "Led technical workshops on React, Node.js, and full-stack development"
       ],
       technologies: ["React", "Node.js", "JavaScript", "Web Development", "Teaching"],
-      logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=60&h=60&fit=crop&crop=center"
+      logo: "https://media.licdn.com/dms/image/v2/C510BAQFfrQ_rZAqEiQ/company-logo_200_200/company-logo_200_200/0/1630568622145?e=1758758400&v=beta&t=3w9tky38JPHM3wKuiqMhmVeoRMukNb4Mq-4mUawl3Pw"
     },
     {
       id: 2,
@@ -132,7 +133,7 @@ export const portfolioData = {
         "Organized and managed large-scale technical events and competitions"
       ],
       technologies: ["Project Management", "Team Leadership", "Event Organization"],
-      logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=60&h=60&fit=crop&crop=center"
+      logo: "https://media.licdn.com/dms/image/v2/C560BAQHC_UfK23lLig/company-logo_200_200/company-logo_200_200/0/1630640870769?e=1758758400&v=beta&t=f_j_0LhwV1fGzyCExyLEBb5VWTpDUIfm9g8NfZ5mc_w"
     }
   ],
 
@@ -154,9 +155,9 @@ export const portfolioData = {
         "Structured content refinement and optimization",
         "Secure file storage using Bun, PostgreSQL, and Drizzle ORM"
       ],
-      liveUrl: "https://topic-maker-demo.com",
-      githubUrl: "https://github.com/Manishk5507/topic-maker",
-      status: "Completed",
+      liveUrl: "https://topicmarker-project.onrender.com/",
+      githubUrl: "https://github.com/Manishk5507/TopicMarker-main",
+      status: "Ongoing",
       category: "AI/ML Application",
       date: "Apr 2025"
     },
@@ -165,7 +166,7 @@ export const portfolioData = {
       title: "Absens",
       description: "AI-Powered Missing Persons Detection platform reuniting loved ones using facial recognition and age progression.",
       longDescription: "Built a platform leveraging facial recognition and AI-driven age progression to identify and help reunite missing individuals, even after years. Features secure identity management and real-time nationwide alerts.",
-      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&h=400&fit=crop&crop=center",
       technologies: ["MERN", "Redux", "TensorFlow", "Keras", "FaceNet", "Dialogflow"],
       features: [
         "AI-Powered Missing Persons Detection with facial recognition",
@@ -176,8 +177,8 @@ export const portfolioData = {
         "Verified user and authority access control",
         "Advanced machine learning for face matching accuracy"
       ],
-      liveUrl: "https://absens-demo.com",
-      githubUrl: "https://github.com/Manishk5507/absens",
+      liveUrl: "https://absens-hof-frontend.vercel.app/",
+      githubUrl: "https://github.com/Manishk5507/ABSENS_HOF",
       status: "Completed",
       category: "AI/ML Application",
       date: "Feb 2025"
@@ -198,8 +199,8 @@ export const portfolioData = {
         "Tailored, descriptive destination overviews",
         "Enhanced trip discovery and planning tools"
       ],
-      liveUrl: "https://tourbuddy-demo.com",
-      githubUrl: "https://github.com/Manishk5507/tourbuddy",
+      liveUrl: "https://tourbuddy-d6zy.onrender.com/",
+      githubUrl: "https://github.com/Manishk5507/TourBuddy",
       status: "Completed",
       category: "Web Application",
       date: "Aug 2024"
@@ -223,7 +224,7 @@ export const portfolioData = {
         "Member of E-Cell, IIIT Lucknow",
         "Trained 200+ students in web development"
       ],
-      logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=60&h=60&fit=crop&crop=center"
+      logo: "https://iiitl.ac.in/wp-content/uploads/2019/10/Final_Logo_IIITL-800x718.png"
     },
     {
       id: 2,
@@ -238,7 +239,7 @@ export const portfolioData = {
         "Consistent academic excellence",
         "Strong foundation in Mathematics and Science"
       ],
-      logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=60&h=60&fit=crop&crop=center"
+      logo: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=60&h=60&fit=crop&crop=center"
     }
   ],
 
@@ -254,28 +255,28 @@ export const portfolioData = {
     {
       name: "Special Mention - Equinox World MUN 2023",
       issuer: "Equinox World MUN",
-      date: "2023",
-      credentialId: "EWMUN-2023",
-      url: "#"
+      date: "2024",
+      credentialId: "EWMUN-2024",
+      url: "https://drive.google.com/file/d/1is1lCh1b3PBavu1eDnxnJ0rq89kIu2-b/view?usp=sharing"
     },
     {
       name: "4-star Rated - CodeChef",
       issuer: "CodeChef",
-      date: "2024",
+      date: "2025",
       credentialId: "manishk5507",
       url: "https://www.codechef.com/users/manishk5507"
     },
     {
       name: "Specialist - Codeforces",
       issuer: "Codeforces",
-      date: "2024",
+      date: "2025",
       credentialId: "_.Manish._",
       url: "https://codeforces.com/profile/_.Manish._"
     },
     {
       name: "Knight - LeetCode",
       issuer: "LeetCode",
-      date: "2024",
+      date: "2025",
       credentialId: "Manishk5507",
       url: "https://leetcode.com/Manishk5507"
     }

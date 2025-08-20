@@ -25,24 +25,24 @@ const About = ({ data }) => {
 
   const highlights = [
     {
-      icon: '🚀',
-      title: 'Performance Focused',
-      description: 'I build fast, optimized applications that provide excellent user experience.'
+      icon: '🏆',
+      title: 'Competitive Programmer',
+      description: '4-star CodeChef (1889) & Specialist Codeforces (1564) with 800+ problems solved.'
     },
     {
-      icon: '🎨',
-      title: 'Design Minded',
-      description: 'I believe great code should be paired with beautiful, intuitive design.'
+      icon: '🤖',
+      title: 'AI/ML Specialist',
+      description: 'Expert in LLMs, RAG applications, and AI integration with modern web technologies.'
     },
     {
-      icon: '🔧',
-      title: 'Problem Solver',
-      description: 'I love tackling complex challenges and finding elegant solutions.'
+      icon: '👨‍🏫',
+      title: 'Tech Leader & Mentor',
+      description: 'Trained 200+ students and organized hackathons as Web Wing Member at Axios.'
     },
     {
-      icon: '📱',
-      title: 'Mobile First',
-      description: 'All my applications are built with mobile responsiveness as a priority.'
+      icon: '🎯',
+      title: 'Innovation Focused',
+      description: 'Award-winning developer creating impactful solutions like TopicMaker and Absens.'
     }
   ];
 
@@ -57,23 +57,28 @@ const About = ({ data }) => {
                 About <span className="text-gradient">Me</span>
               </h2>
               <p className="text-xl text-secondary-600 leading-relaxed">
-                I'm a passionate full-stack developer with a love for creating digital experiences 
-                that make a difference. With expertise in modern web technologies, I help businesses 
-                and individuals bring their ideas to life.
+                I'm a passionate Computer Science student at IIIT Lucknow with an outstanding 9.21 CGPA, 
+                specializing in full-stack development, AI/ML, and competitive programming. I combine 
+                academic excellence with practical expertise to build innovative solutions that solve real-world problems.
               </p>
             </div>
 
             <div className="prose prose-lg text-secondary-700">
               <p>
-                My journey in web development started over 3 years ago, and I've been constantly 
-                learning and evolving ever since. I specialize in React.js, Node.js, and modern 
-                web technologies, but I'm always excited to explore new tools and frameworks.
+                As a 4-star rated competitive programmer on CodeChef (1889 rating) and Specialist on Codeforces (1564 rating), 
+                I've solved 800+ algorithmic problems and achieved global rankings including rank 59 in CodeChef Starters 195. 
+                This problem-solving mindset drives my approach to software development, where I create efficient, scalable solutions.
               </p>
               <p>
-                When I'm not coding, you can find me contributing to open-source projects, 
-                writing technical articles, or exploring the latest trends in web development. 
-                I believe in writing clean, maintainable code and creating applications that 
-                users love to interact with.
+                Beyond coding, I'm a Web Wing Member at Axios (IIIT Lucknow's premier technical society), where I've trained 
+                200+ students in web development and organized hackathons to strengthen campus tech culture. My projects like 
+                TopicMaker (AI-powered lesson planner) and Absens (AI-driven missing persons detection) showcase my expertise 
+                in integrating cutting-edge AI technologies with robust full-stack architectures.
+              </p>
+              <p>
+                I'm the "Most Creative AI Idea Winner" at Hackofiesta v5 and actively contribute to the tech community through 
+                leadership roles in E-Cell IIIT Lucknow. Whether it's building scalable web applications, implementing AI solutions, 
+                or mentoring fellow developers, I'm passionate about leveraging technology to create meaningful impact.
               </p>
             </div>
 

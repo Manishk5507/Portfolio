@@ -128,38 +128,6 @@ const Education = ({ data, achievements }) => {
             </div>
           </div>
         </div>
-
-        {/* Skills Development Timeline */}
-        <div className="mt-16">
-          <h3 className="text-2xl font-display font-semibold text-secondary-900 mb-8 text-center">
-            Learning Journey
-          </h3>
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary-200"></div>
-            <div className="space-y-12">
-              {[
-                { year: '2019', title: 'Started Web Development', description: 'Began learning HTML, CSS, and JavaScript' },
-                { year: '2020', title: 'Frontend Frameworks', description: 'Mastered React.js and Vue.js' },
-                { year: '2021', title: 'Backend Development', description: 'Learned Node.js, Express, and databases' },
-                { year: '2022', title: 'Cloud & DevOps', description: 'Explored AWS, Docker, and CI/CD' },
-                { year: '2023', title: 'Advanced Concepts', description: 'Microservices, GraphQL, and performance optimization' },
-                { year: '2024', title: 'AI Integration', description: 'Exploring AI/ML integration in web applications' }
-              ].map((milestone, index) => (
-                <div key={index} className={`flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                    <div className="card p-4">
-                      <div className="text-primary-600 font-bold text-lg mb-1">{milestone.year}</div>
-                      <h4 className="font-semibold text-secondary-900 mb-2">{milestone.title}</h4>
-                      <p className="text-secondary-600 text-sm">{milestone.description}</p>
-                    </div>
-                  </div>
-                  <div className="w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg relative z-10"></div>
-                  <div className="w-5/12"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
