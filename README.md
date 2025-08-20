@@ -330,14 +330,52 @@ For detailed setup instructions with email templates, see [EMAILJS_SETUP.md](EMA
 
 ## 🧪 Testing
 
-This project uses Playwright for E2E testing. To run tests:
+This project uses Playwright for E2E testing to ensure all features work correctly across different browsers and devices.
+
+### Setup Testing Environment
 
 ```bash
-# Install Playwright (if not already installed)
-npx playwright install
+# Install dependencies (includes Playwright)
+npm install
 
-# Run tests
+# Install Playwright browsers
+npx playwright install
+```
+
+### Running Tests
+
+```bash
+# Run all tests
 npm run test:e2e
+
+# Run tests with UI mode (interactive)
+npm run test:e2e:ui
+
+# Run tests in headed mode (see browser)
+npm run test:e2e:headed
+
+# Run tests for specific browser
+npx playwright test --project=chromium
+npx playwright test --project=firefox
+npx playwright test --project=webkit
+```
+
+### Test Coverage
+
+The test suite covers:
+- ✅ Homepage loading and basic functionality
+- ✅ Navigation between sections
+- ✅ Contact form validation and functionality
+- ✅ Responsive design on mobile devices
+- ✅ Competitive programming ratings loading
+- ✅ Social links functionality
+- ✅ Cross-browser compatibility
+
+### Viewing Test Reports
+
+```bash
+# View HTML test report
+npx playwright show-report
 ```
 
 ## 🤝 Contributing
