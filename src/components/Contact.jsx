@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { sendEmail, validateEmailConfig } from '../services/emailService';
 
 const Contact = ({ data }) => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,13 @@ const Contact = ({ data }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [isEmailConfigured, setIsEmailConfigured] = useState(false);
+
+  // Check email configuration on component mount
+  useEffect(() => {
+    setIsEmailConfigured(validateEmailConfig());
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -20,16 +28,39 @@ const Contact = ({ data }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+    setSubmitStatus(null);
+    setSubmitMessage('');
+
+    try {
+      // Check if email service is configured
+      if (!isEmailConfigured) {
+        throw new Error('Email service is not configured. Please contact the administrator.');
+      }
+
+      // Send email using EmailJS
+      const result = await sendEmail(formData);
+
+      if (result.success) {
+        setSubmitStatus('success');
+        setSubmitMessage(result.message);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+        setSubmitMessage(result.message);
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+      setSubmitMessage(error.message || 'Failed to send message. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
       
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus(null), 3000);
-    }, 2000);
+      // Reset status after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+        setSubmitMessage('');
+      }, 5000);
+    }
   };
 
   const contactMethods = [
@@ -217,9 +248,9 @@ const Contact = ({ data }) => {
               
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !isEmailConfigured}
                 className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
-                  isSubmitting
+                  isSubmitting || !isEmailConfigured
                     ? 'bg-secondary-400 text-secondary-600 cursor-not-allowed'
                     : 'bg-primary-600 hover:bg-primary-700 text-white transform hover:scale-105'
                 }`}
@@ -229,13 +260,15 @@ const Contact = ({ data }) => {
                     <div className="w-5 h-5 border-2 border-secondary-600 border-t-transparent rounded-full animate-spin"></div>
                     <span>Sending...</span>
                   </span>
+                ) : !isEmailConfigured ? (
+                  'Email Service Not Configured'
                 ) : (
                   'Send Message'
                 )}
               </button>
             </form>
 
-            {/* Success Message */}
+            {/* Status Messages */}
             {submitStatus === 'success' && (
               <div className="mt-6 p-4 bg-green-100 border border-green-200 rounded-lg">
                 <div className="flex items-center space-x-2">
@@ -243,7 +276,34 @@ const Contact = ({ data }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <p className="text-green-800 font-medium">
-                    Thank you! Your message has been sent successfully.
+                    {submitMessage || 'Thank you! Your message has been sent successfully.'}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="mt-6 p-4 bg-red-100 border border-red-200 rounded-lg">
+                <div className="flex items-center space-x-2">
+                  <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p className="text-red-800 font-medium">
+                    {submitMessage || 'Failed to send message. Please try again.'}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Configuration Warning */}
+            {!isEmailConfigured && (
+              <div className="mt-6 p-4 bg-yellow-100 border border-yellow-200 rounded-lg">
+                <div className="flex items-center space-x-2">
+                  <svg className="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                  </svg>
+                  <p className="text-yellow-800 font-medium">
+                    Email service is not configured. Please use the direct email link above.
                   </p>
                 </div>
               </div>
