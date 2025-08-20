@@ -111,24 +111,24 @@ const Contact = ({ data }) => {
 
   return (
     <section id="contact" className="section-padding bg-secondary-50">
-      <div className="container-custom">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-display font-bold text-secondary-900 mb-4">
+      <div className="container-custom px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-secondary-900 mb-3 sm:mb-4">
             Let's <span className="text-gradient">Connect</span>
           </h2>
-          <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-secondary-600 max-w-3xl mx-auto">
             {data.subtitle}
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-6 lg:space-y-8">
             <div>
-              <h3 className="text-2xl font-display font-semibold text-secondary-900 mb-6">
+              <h3 className="text-xl sm:text-2xl font-display font-semibold text-secondary-900 mb-4 sm:mb-6">
                 Get in Touch
               </h3>
-              <p className="text-secondary-700 leading-relaxed mb-8">
+              <p className="text-sm sm:text-base text-secondary-700 leading-relaxed mb-6 sm:mb-8">
                 I'm always interested in new opportunities, interesting projects, and meeting new people. 
                 Whether you have a project in mind, want to collaborate, or just want to say hello, 
                 I'd love to hear from you.
@@ -136,52 +136,52 @@ const Contact = ({ data }) => {
             </div>
 
             {/* Contact Methods */}
-            <div className="grid sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
               {contactMethods.map((method, index) => (
-                <div key={index} className="card p-6 hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-center space-x-4 mb-3">
-                    <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600">
+                <div key={index} className="card p-4 sm:p-6 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center space-x-3 sm:space-x-4 mb-2 sm:mb-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 flex-shrink-0">
                       {method.icon}
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-secondary-900">{method.title}</h4>
-                      <p className="text-sm text-secondary-600">{method.description}</p>
+                    <div className="min-w-0 flex-1">
+                      <h4 className="font-semibold text-secondary-900 text-sm sm:text-base">{method.title}</h4>
+                      <p className="text-xs sm:text-sm text-secondary-600">{method.description}</p>
                     </div>
                   </div>
                   {method.href ? (
                     <a
                       href={method.href}
-                      className="text-primary-600 hover:text-primary-700 font-medium transition-colors duration-300"
+                      className="text-primary-600 hover:text-primary-700 font-medium transition-colors duration-300 text-sm sm:text-base break-all"
                     >
                       {method.value}
                     </a>
                   ) : (
-                    <p className="text-secondary-700 font-medium">{method.value}</p>
+                    <p className="text-secondary-700 font-medium text-sm sm:text-base">{method.value}</p>
                   )}
                 </div>
               ))}
             </div>
 
             {/* Availability Status */}
-            <div className="card p-6 bg-gradient-to-r from-green-50 to-green-100 border border-green-200">
+            <div className="card p-4 sm:p-6 bg-gradient-to-r from-green-50 to-green-100 border border-green-200">
               <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse flex-shrink-0"></div>
                 <div>
-                  <h4 className="font-semibold text-green-800">Currently Available</h4>
-                  <p className="text-green-700 text-sm">{data.availability}</p>
+                  <h4 className="font-semibold text-green-800 text-sm sm:text-base">Currently Available</h4>
+                  <p className="text-green-700 text-xs sm:text-sm">{data.availability}</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="card p-8">
-            <h3 className="text-2xl font-display font-semibold text-secondary-900 mb-6">
+          <div className="card p-6 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-display font-semibold text-secondary-900 mb-4 sm:mb-6">
               Send a Message
             </h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-secondary-700 mb-2">
                     Your Name *
@@ -193,7 +193,7 @@ const Contact = ({ data }) => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
+                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300 text-sm sm:text-base"
                     placeholder="John Doe"
                   />
                 </div>
@@ -208,7 +208,7 @@ const Contact = ({ data }) => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
+                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300 text-sm sm:text-base"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -225,7 +225,7 @@ const Contact = ({ data }) => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
+                  className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300 text-sm sm:text-base"
                   placeholder="Project Inquiry"
                 />
               </div>
@@ -240,8 +240,8 @@ const Contact = ({ data }) => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={6}
-                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300 resize-none"
+                  rows={5}
+                  className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300 resize-none text-sm sm:text-base"
                   placeholder="Tell me about your project..."
                 />
               </div>
@@ -249,7 +249,7 @@ const Contact = ({ data }) => {
               <button
                 type="submit"
                 disabled={isSubmitting || !isEmailConfigured}
-                className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
+                className={`w-full py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
                   isSubmitting || !isEmailConfigured
                     ? 'bg-secondary-400 text-secondary-600 cursor-not-allowed'
                     : 'bg-primary-600 hover:bg-primary-700 text-white transform hover:scale-105'
@@ -257,7 +257,7 @@ const Contact = ({ data }) => {
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center space-x-2">
-                    <div className="w-5 h-5 border-2 border-secondary-600 border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-secondary-600 border-t-transparent rounded-full animate-spin"></div>
                     <span>Sending...</span>
                   </span>
                 ) : !isEmailConfigured ? (

@@ -55,21 +55,21 @@ const Hero = ({ data, social }) => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-2xl animate-pulse"></div>
       </div>
 
-      <div className="container-custom relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container-custom relative z-10 px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-80px)] py-8 lg:py-0">
           {/* Content */}
-          <div className="text-white space-y-8 animate-slide-up">
-            <div className="space-y-4">
-              <p className="text-lg font-medium text-white/80 animate-fade-in">
+          <div className="text-white space-y-6 lg:space-y-8 animate-slide-up order-2 lg:order-1">
+            <div className="space-y-3 lg:space-y-4">
+              <p className="text-base sm:text-lg font-medium text-white/80 animate-fade-in">
                 👋 Hello, I'm
               </p>
-              <h1 className="text-5xl lg:text-7xl font-display font-bold leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold leading-tight">
                 <span className="text-gradient bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
                   {data.name}
                 </span>
               </h1>
-              <div className="h-16 flex items-center">
-                <h2 className="text-2xl lg:text-3xl font-semibold text-white/90">
+              <div className="h-12 sm:h-14 lg:h-16 flex items-center">
+                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-white/90">
                   <span className="inline-block animate-fade-in">
                     {titles[currentTitle]}
                   </span>
@@ -77,28 +77,28 @@ const Hero = ({ data, social }) => {
               </div>
             </div>
 
-            <p className="text-xl text-white/80 leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg lg:text-xl text-white/80 leading-relaxed max-w-2xl">
               {data.bio}
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
                 onClick={() => scrollToSection('projects')}
-                className="btn-primary bg-white text-primary-600 hover:bg-white/90 hover:text-primary-700"
+                className="btn-primary bg-white text-primary-600 hover:bg-white/90 hover:text-primary-700 text-sm sm:text-base"
               >
                 View My Work
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="btn-secondary border-white text-white hover:bg-white hover:text-primary-600"
+                className="btn-secondary border-white text-white hover:bg-white hover:text-primary-600 text-sm sm:text-base"
               >
                 Get In Touch
               </button>
             </div>
 
             {/* Social Links */}
-            <div className="flex space-x-6 pt-4">
+            <div className="flex space-x-4 sm:space-x-6 pt-2 lg:pt-4">
               {Object.entries(social).map(([platform, url]) => (
                 socialIcons[platform] && (
                   <a
@@ -106,7 +106,7 @@ const Hero = ({ data, social }) => {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/70 hover:text-white transform hover:scale-110 transition-all duration-300"
+                    className="text-white/70 hover:text-white transform hover:scale-110 transition-all duration-300 w-6 h-6 sm:w-7 sm:h-7"
                   >
                     {socialIcons[platform]}
                   </a>
@@ -116,14 +116,14 @@ const Hero = ({ data, social }) => {
           </div>
 
           {/* Profile Image */}
-          <div className="relative animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <div className="relative w-80 h-80 mx-auto">
+          <div className="relative animate-slide-up order-1 lg:order-2" style={{ animationDelay: '0.2s' }}>
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 mx-auto">
               {/* Decorative rings */}
               <div className="absolute inset-0 rounded-full border-2 border-white/20 animate-spin" style={{ animationDuration: '20s' }}></div>
-              <div className="absolute inset-4 rounded-full border-2 border-white/10 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
+              <div className="absolute inset-3 sm:inset-4 rounded-full border-2 border-white/10 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
               
               {/* Profile image */}
-              <div className="absolute inset-8 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm">
+              <div className="absolute inset-6 sm:inset-8 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm">
                 <img
                   src={data.avatar}
                   alt={data.name}
@@ -132,11 +132,11 @@ const Hero = ({ data, social }) => {
               </div>
               
               {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center animate-bounce">
-                <span className="text-2xl">⚛️</span>
+              <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center animate-bounce">
+                <span className="text-xl sm:text-2xl">⚛️</span>
               </div>
-              <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center animate-bounce" style={{ animationDelay: '0.5s' }}>
-                <span className="text-2xl">💻</span>
+              <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center animate-bounce" style={{ animationDelay: '0.5s' }}>
+                <span className="text-xl sm:text-2xl">💻</span>
               </div>
             </div>
           </div>

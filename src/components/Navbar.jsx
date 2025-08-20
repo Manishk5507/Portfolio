@@ -28,11 +28,11 @@ const Navbar = ({ activeSection }) => {
         ? 'bg-white/95 backdrop-blur-md shadow-lg' 
         : 'bg-transparent'
     }`}>
-      <div className="container-custom">
-        <div className="flex items-center justify-between py-4">
+      <div className="container-custom px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between py-3 sm:py-4">
           {/* Logo */}
           <div 
-            className="text-2xl font-display font-bold cursor-pointer"
+            className="text-xl sm:text-2xl font-display font-bold cursor-pointer flex-shrink-0"
             onClick={() => scrollToSection('home')}
           >
             <span className={`transition-colors duration-300 ${
@@ -48,12 +48,12 @@ const Navbar = ({ activeSection }) => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {portfolioData.navigation.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href.substring(1))}
-                className={`font-medium transition-all duration-300 hover:scale-105 ${
+                className={`font-medium text-sm xl:text-base transition-all duration-300 hover:scale-105 px-2 py-1 ${
                   activeSection === item.href.substring(1)
                     ? isScrolled 
                       ? 'text-primary-600 border-b-2 border-primary-600' 
@@ -69,10 +69,10 @@ const Navbar = ({ activeSection }) => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block flex-shrink-0">
             <button
               onClick={() => scrollToSection('contact')}
-              className={`font-medium px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105 ${
+              className={`font-medium text-sm xl:text-base px-4 xl:px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105 ${
                 isScrolled
                   ? 'bg-primary-600 text-white hover:bg-primary-700 shadow-lg'
                   : 'bg-white text-primary-600 hover:bg-white/90 shadow-lg'
@@ -84,8 +84,9 @@ const Navbar = ({ activeSection }) => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="lg:hidden p-2 flex-shrink-0"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
           >
             <div className="space-y-1">
               <div className={`w-6 h-0.5 transition-all duration-300 ${
@@ -102,20 +103,20 @@ const Navbar = ({ activeSection }) => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden transition-all duration-300 overflow-hidden ${
+        <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-96 pb-6' : 'max-h-0'
         }`}>
-          <div className="space-y-4">
+          <div className="space-y-3 px-2">
             {portfolioData.navigation.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href.substring(1))}
-                className={`block w-full text-left font-medium transition-colors duration-300 ${
+                className={`block w-full text-left font-medium py-2 px-3 rounded-lg transition-colors duration-300 ${
                   activeSection === item.href.substring(1)
-                    ? 'text-primary-600'
+                    ? 'text-primary-600 bg-primary-50'
                     : isScrolled
-                      ? 'text-secondary-600 hover:text-primary-600'
-                      : 'text-white/80 hover:text-white'
+                      ? 'text-secondary-600 hover:text-primary-600 hover:bg-secondary-50'
+                      : 'text-white/80 hover:text-white hover:bg-white/10'
                 }`}
               >
                 {item.name}
@@ -123,7 +124,7 @@ const Navbar = ({ activeSection }) => {
             ))}
             <button
               onClick={() => scrollToSection('contact')}
-              className="w-full mt-4 bg-primary-600 text-white font-medium py-3 rounded-lg hover:bg-primary-700 transition-colors duration-300"
+              className="w-full mt-4 bg-primary-600 text-white font-medium py-3 px-4 rounded-lg hover:bg-primary-700 transition-colors duration-300"
             >
               Let's Talk
             </button>
