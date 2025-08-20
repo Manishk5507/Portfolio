@@ -8,10 +8,10 @@ export const portfolioData = {
     email: "7055ranamanish@gmail.com",
     phone: "+91 7055447591",
     location: "Lucknow, UP, India",
-    website: "https://manishkumar.dev",
-    avatar: "https://res.cloudinary.com/dbhs1y7co/image/upload/v1755716582/me1_ihy3go.jpg",
+    website: import.meta.env.VITE_PORTFOLIO_URL || "https://manishkumar.dev",
+    avatar: import.meta.env.VITE_AVATAR_URL || "https://res.cloudinary.com/dbhs1y7co/image/upload/v1755716582/me1_ihy3go.jpg",
     bio: "I'm a passionate Computer Science student at IIIT Lucknow with a CGPA of 9.21. I specialize in full-stack development, AI/ML, and competitive programming. I love building innovative solutions that solve real-world problems using cutting-edge technologies.",
-    resumeUrl: "https://drive.google.com/file/d/1dNRgHpTZ2RLMdXn8bJqssGYuTxP0iANZ/view"
+    resumeUrl: import.meta.env.VITE_RESUME_URL || "https://drive.google.com/file/d/1dNRgHpTZ2RLMdXn8bJqssGYuTxP0iANZ/view"
   },
 
   // Social Links

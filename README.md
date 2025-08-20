@@ -1,270 +1,223 @@
 # Portfolio Website
 
-A modern, responsive portfolio website built with React.js, Vite, and Tailwind CSS. This portfolio showcases your skills, experience, projects, and provides a way for potential clients or employers to contact you.
+A modern, responsive portfolio website built with React and Vite.
 
 ## 🚀 Features
 
-- **Modern Design**: Clean, professional, and visually appealing interface
-- **Fully Responsive**: Optimized for all devices (desktop, tablet, mobile)
-- **Dynamic Content**: Easy to update personal information, skills, projects, and experience
-- **Smooth Animations**: Engaging animations and transitions
-- **Contact Form**: Functional contact form with validation
-- **SEO Optimized**: Meta tags and structured data for better search engine visibility
+- **Responsive Design**: Works perfectly on all devices
+- **Modern UI**: Clean and professional design with Tailwind CSS
+- **Environment Variables**: Easy configuration without code changes
+- **Real-time Competitive Programming Ratings**: Live Codeforces and CodeChef ratings via APIs
 - **Fast Performance**: Built with Vite for optimal loading speeds
-- **Accessible**: WCAG compliant design
+- **SEO Friendly**: Proper meta tags and structure
 
-## 🛠️ Technologies Used
+## 🛠️ Setup
 
-- **Frontend**: React.js 19, Vite
-- **Styling**: Tailwind CSS, Custom CSS
-- **Icons**: Heroicons, Custom SVG icons
-- **Fonts**: Inter, Poppins (Google Fonts)
-- **Build Tool**: Vite
-- **Package Manager**: npm
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd Portfolio
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edit `.env` file with your values:
+   ```env
+   VITE_PORTFOLIO_URL=https://your-portfolio-url.com
+   VITE_RESUME_URL=https://your-resume-url.com
+   VITE_AVATAR_URL=https://your-avatar-image-url.com
+   ```
+
+4. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+## 📝 Updating Content Without Redeployment
+
+### Problem Solved
+Previously, updating the resume or profile image required code changes and redeployment. Now you can update these URLs without touching the code!
+
+### How it Works
+The portfolio uses environment variables (`VITE_RESUME_URL`, `VITE_AVATAR_URL`) to load content URLs dynamically.
+
+### Update Process
+
+#### For Development:
+1. Update the `.env` file with your new URLs (resume, avatar, etc.)
+2. Restart the development server: `npm run dev`
+
+#### For Production (depends on your hosting platform):
+
+**Vercel:**
+1. Go to your Vercel dashboard
+2. Select your project → Settings → Environment Variables
+3. Update `VITE_RESUME_URL`, `VITE_AVATAR_URL`, etc. with your new URLs
+4. Redeploy (automatic in most cases)
+
+**Netlify:**
+1. Go to your Netlify dashboard
+2. Site Settings → Environment Variables
+3. Update the environment variables (`VITE_RESUME_URL`, `VITE_AVATAR_URL`)
+4. Trigger a new deploy
+
+**Other Platforms:**
+- Update environment variables in your hosting platform's dashboard
+- Most platforms will auto-redeploy when environment variables change
+
+### URL Formats
+
+**Resume URLs:**
+
+*Google Drive (View Mode):*
+```
+https://drive.google.com/file/d/YOUR_FILE_ID/view
+```
+
+*Google Drive (Download Mode):*
+```
+https://drive.google.com/uc?export=download&id=YOUR_FILE_ID
+```
+
+*Other Cloud Storage:*
+- Dropbox: Use direct share links
+- OneDrive: Use direct share links
+- AWS S3: Use public bucket URLs
+
+**Avatar Image URLs:**
+
+*Cloudinary:*
+```
+https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v1234567890/image_id.jpg
+```
+
+*Other Image Hosting:*
+- Imgur: Direct image links
+- AWS S3: Public bucket image URLs
+- GitHub: Raw file URLs from repositories
+- Any CDN with direct image access
+
+## 🔧 Configuration
+
+### Environment Variables
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `VITE_PORTFOLIO_URL` | Your portfolio website URL | `https://manishkumar.dev` |
+| `VITE_RESUME_URL` | Direct link to your resume | `https://drive.google.com/file/d/...` |
+| `VITE_AVATAR_URL` | Direct link to your profile image | `https://cloudinary.com/...` |
+| `VITE_CODEFORCES_HANDLE` | Your Codeforces username | `_.Manish._` |
+| `VITE_CODECHEF_HANDLE` | Your CodeChef username | `manishk5507` |
+
+### Updating Portfolio Data
+
+Edit `/src/data/portfolioData.js` to update:
+- Personal information
+- Skills
+- Projects
+- Experience
+- Education
+- Social links
 
 ## 📁 Project Structure
 
 ```
-src/
-├── components/          # React components
-│   ├── About.jsx
-│   ├── Contact.jsx
-│   ├── Education.jsx
-│   ├── Experience.jsx
-│   ├── Footer.jsx
-│   ├── Hero.jsx
-│   ├── LoadingScreen.jsx
-│   ├── Navbar.jsx
-│   ├── Projects.jsx
-│   ├── ScrollToTop.jsx
-│   ├── Skills.jsx
-│   └── Testimonials.jsx
-├── data/               # Data configuration
-│   └── portfolioData.js
-├── App.jsx            # Main App component
-├── index.css          # Global styles
-└── main.jsx          # Entry point
+Portfolio/
+├── src/
+│   ├── components/          # React components
+│   ├── data/               # Portfolio data
+│   └── assets/             # Static assets
+├── public/                 # Public assets
+├── .env                    # Environment variables (not in git)
+├── .env.example           # Environment variables template
+└── README.md              # This file
 ```
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (version 16 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <your-repo-url>
-cd portfolio
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
-4. Open your browser and visit `http://localhost:5173`
-
-## 🎨 Customization
-
-### 1. Personal Information
-
-Edit the `src/data/portfolioData.js` file to update your personal information:
-
-```javascript
-export const portfolioData = {
-  personal: {
-    name: "Your Name",
-    title: "Your Title",
-    email: "your.email@example.com",
-    // ... other personal details
-  },
-  // ... rest of the data
-};
-```
-
-### 2. Skills
-
-Update your technical and soft skills in the `skills` section:
-
-```javascript
-skills: {
-  technical: [
-    {
-      category: "Frontend",
-      skills: [
-        { name: "React.js", level: 90, icon: "⚛️" },
-        // ... add your skills
-      ]
-    }
-  ],
-  soft: [
-    "Problem Solving",
-    // ... add your soft skills
-  ]
-}
-```
-
-### 3. Experience
-
-Add your work experience in the `experience` array:
-
-```javascript
-experience: [
-  {
-    id: 1,
-    company: "Company Name",
-    position: "Your Position",
-    duration: "2022 - Present",
-    // ... other details
-  }
-]
-```
-
-### 4. Projects
-
-Showcase your projects in the `projects` array:
-
-```javascript
-projects: [
-  {
-    id: 1,
-    title: "Project Name",
-    description: "Project description",
-    technologies: ["React", "Node.js"],
-    // ... other project details
-  }
-]
-```
-
-### 5. Colors and Styling
-
-Customize the color scheme in `tailwind.config.js`:
-
-```javascript
-theme: {
-  extend: {
-    colors: {
-      primary: {
-        // ... your primary colors
-      },
-      secondary: {
-        // ... your secondary colors
-      }
-    }
-  }
-}
-```
-
-### 6. Images
-
-Replace placeholder images with your actual images:
-
-- Profile picture: Update the `avatar` field in personal data
-- Project images: Update the `image` field in each project
-- Company logos: Update the `logo` field in experience and education
-
-## 📱 Responsive Design
-
-The portfolio is fully responsive and optimized for:
-
-- **Desktop**: 1024px and above
-- **Tablet**: 768px to 1023px
-- **Mobile**: Below 768px
-
-## 🔧 Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
 
 ## 🚀 Deployment
 
-### Netlify
+1. **Build the project**
+   ```bash
+   npm run build
+   ```
 
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder to Netlify
+2. **Set environment variables** in your hosting platform
 
-### Vercel
+3. **Deploy the `dist` folder** to your hosting service
 
-1. Connect your GitHub repository to Vercel
-2. Vercel will automatically build and deploy
+### Recommended Hosting Platforms
+- **Vercel** (Recommended for React apps)
+- **Netlify** (Great for static sites)
+- **GitHub Pages** (Free option)
+- **AWS S3 + CloudFront** (Scalable option)
 
-### GitHub Pages
+## 🔄 Content Update Workflow
 
-1. Install gh-pages: `npm install --save-dev gh-pages`
-2. Add to package.json:
-```json
-{
-  "homepage": "https://yourusername.github.io/portfolio",
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  }
-}
+### Resume Update:
+1. **Upload new resume** to your cloud storage (Google Drive, Dropbox, etc.)
+2. **Copy the new URL**
+3. **Update `VITE_RESUME_URL`** in your hosting platform
+4. **Wait for auto-deployment** (usually 1-2 minutes)
+5. **Verify the change** on your live website
+
+### Avatar Image Update:
+1. **Upload new profile image** to your image hosting service (Cloudinary, Imgur, etc.)
+2. **Copy the direct image URL**
+3. **Update `VITE_AVATAR_URL`** in your hosting platform
+4. **Wait for auto-deployment** (usually 1-2 minutes)
+5. **Verify the change** on your live website
+
+No code changes or manual redeployment needed! 🎉
+
+## 📊 Real-time Competitive Programming Ratings
+
+### How It Works
+The portfolio automatically fetches your current ratings from Codeforces and CodeChef APIs every time someone visits your site. This ensures your competitive programming achievements are always up-to-date.
+
+### Features:
+- **Live Data**: Fetches current ratings from official APIs
+- **Smart Caching**: Caches results for 5 minutes to avoid excessive API calls
+- **Fallback System**: Uses static ratings if APIs are unavailable
+- **Loading States**: Shows "..." while fetching data
+- **Error Handling**: Gracefully handles API failures
+
+### Supported Platforms:
+- **Codeforces**: Uses official Codeforces API
+- **CodeChef**: Uses community API with CORS support
+
+### Configuration:
+Update your competitive programming handles in `.env`:
+```env
+VITE_CODEFORCES_HANDLE=your-codeforces-handle
+VITE_CODECHEF_HANDLE=your-codechef-handle
 ```
-3. Run: `npm run deploy`
 
-## 📧 Contact Form
+### API Endpoints Used:
+- **Codeforces**: `https://codeforces.com/api/user.info?handles={handle}`
+- **CodeChef**: `https://codechef-api.vercel.app/{handle}`
 
-The contact form is currently set up with client-side validation. To make it functional, you can:
+## 🛡️ Security Notes
 
-1. **Use a form service** like Formspree, Netlify Forms, or EmailJS
-2. **Set up a backend** with Node.js/Express
-3. **Use serverless functions** with Vercel or Netlify
-
-## 🎯 SEO Optimization
-
-The portfolio includes:
-
-- Meta tags for description, keywords, and author
-- Open Graph tags for social media sharing
-- Twitter Card tags
-- Semantic HTML structure
-- Alt tags for images
-
-## 🔒 Security
-
-- No sensitive data is exposed in the frontend
-- Form validation to prevent malicious input
-- Secure external links with `rel="noopener noreferrer"`
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Design inspiration from modern portfolio websites
-- Icons from Heroicons
-- Fonts from Google Fonts
-- Images from Unsplash (for placeholders)
+- Environment variables starting with `VITE_` are exposed to the client
+- Don't put sensitive information in these variables
+- Use public, shareable URLs for resume links
 
 ## 📞 Support
 
-If you have any questions or need help customizing the portfolio, feel free to reach out:
-
-- Email: your.email@example.com
-- LinkedIn: [Your LinkedIn Profile]
-- GitHub: [Your GitHub Profile]
+If you need help with setup or deployment, feel free to reach out!
 
 ---
 
-**Happy coding! 🚀**
+Built with ❤️ using React, Vite, and Tailwind CSS

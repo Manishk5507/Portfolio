@@ -1,11 +1,26 @@
 import React from 'react';
+import { useCompetitiveProgramming } from '../hooks/useCompetitiveProgramming';
 
 const About = ({ data }) => {
+  // Fetch real-time ratings
+  const { ratings, loading } = useCompetitiveProgramming(
+    import.meta.env.VITE_CODEFORCES_HANDLE || '_.Manish._', // Codeforces handle
+    import.meta.env.VITE_CODECHEF_HANDLE || 'manishk5507', // CodeChef handle
+    1564, // Fallback Codeforces rating
+    1889  // Fallback CodeChef rating
+  );
+
   const stats = [
-    { number: '50+', label: 'Projects Completed' },
-    { number: '3+', label: 'Years Experience' },
-    { number: '20+', label: 'Happy Clients' },
-    { number: '100%', label: 'Client Satisfaction' }
+    { number: '9.21', label: 'CGPA at IIIT Lucknow' },
+    { number: '800+', label: 'Problems Solved' },
+    { 
+      number: loading ? '...' : ratings.codeforces.toString(), 
+      label: 'Codeforces Rating' 
+    },
+    { 
+      number: loading ? '...' : ratings.codechef.toString(), 
+      label: 'CodeChef Rating' 
+    }
   ];
 
   const highlights = [
