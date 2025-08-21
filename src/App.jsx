@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -11,7 +12,9 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import LoadingScreen from './components/LoadingScreen';
+import { ScrollProgress } from './components/AnimatedComponents';
 import { portfolioData } from './data/portfolioData';
+import { pageTransition } from './utils/animations';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -52,21 +55,27 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Navbar activeSection={activeSection} />
-      <main>
-        <Hero data={portfolioData.personal} social={portfolioData.social} />
-        <About data={portfolioData.personal} />
-        <Skills data={portfolioData.skills} />
-        <Experience data={portfolioData.experience} />
-        <Projects data={portfolioData.projects} />
-        <Education data={portfolioData.education} achievements={portfolioData.achievements} />
-        <Timeline />
-        <Contact data={portfolioData.contact} />
-      </main>
-      <Footer data={portfolioData.personal} social={portfolioData.social} />
-      <ScrollToTop />
-    </div>
+    <AnimatePresence>
+      <motion.div 
+        className="App"
+        {...pageTransition}
+      >
+        <ScrollProgress />
+        <Navbar activeSection={activeSection} />
+        <main>
+          <Hero data={portfolioData.personal} social={portfolioData.social} />
+          <About data={portfolioData.personal} />
+          <Skills data={portfolioData.skills} />
+          <Experience data={portfolioData.experience} />
+          <Projects data={portfolioData.projects} />
+          <Education data={portfolioData.education} achievements={portfolioData.achievements} />
+          <Timeline />
+          <Contact data={portfolioData.contact} />
+        </main>
+        <Footer data={portfolioData.personal} social={portfolioData.social} />
+        <ScrollToTop />
+      </motion.div>
+    </AnimatePresence>
   );
 }
 

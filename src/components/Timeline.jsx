@@ -131,25 +131,25 @@ const Timeline = () => {
 
   return (
     <section id="timeline" className="section-padding bg-white">
-      <div className="container-custom">
+      <div className="container-custom px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-display font-bold text-secondary-900 mb-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-secondary-900 mb-4 sm:mb-6">
             My <span className="text-gradient">Journey</span>
           </h2>
-          <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-secondary-600 max-w-3xl mx-auto px-2">
             From a curious first-year student to a skilled developer and competitive programmer - 
             here's the story of my growth, achievements, and continuous learning journey at IIIT Lucknow.
           </p>
         </div>
 
         {/* Timeline */}
-        <div className="relative">
+        <div className="relative px-1 sm:px-2 md:px-0">
           {/* Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-200 via-primary-400 to-primary-600"></div>
+          <div className="absolute left-6 sm:left-7 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-200 via-primary-400 to-primary-600"></div>
 
           {/* Timeline Items */}
-          <div className="space-y-12">
+          <div className="space-y-6 sm:space-y-8 md:space-y-12">
             {timelineData.map((item, index) => (
               <div
                 key={item.id}
@@ -158,48 +158,48 @@ const Timeline = () => {
                 } flex-col md:flex-row`}
               >
                 {/* Timeline Node */}
-                <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-1/2">
-                  <div className={`w-8 h-8 ${item.color} rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg`}>
+                <div className="absolute left-6 sm:left-7 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-1/2 z-10">
+                  <div className={`w-8 h-8 sm:w-10 sm:h-10 ${item.color} rounded-full flex items-center justify-center text-white text-sm sm:text-base font-bold shadow-lg`}>
                     {item.icon}
                   </div>
                 </div>
 
                 {/* Content Card */}
-                <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${
+                <div className={`w-full md:w-5/12 ml-16 sm:ml-18 md:ml-0 ${
                   index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
                 }`}>
-                  <div className="card p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <div className="card p-4 sm:p-5 lg:p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                     {/* Date Badge */}
-                    <div className={`inline-block px-3 py-1 rounded-full text-sm font-medium mb-4 ${item.color} text-white`}>
+                    <div className={`inline-block px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4 ${item.color} text-white`}>
                       {item.date}
                     </div>
 
                     {/* Category */}
-                    <div className="text-sm text-primary-600 font-medium mb-2">
+                    <div className="text-xs sm:text-sm text-primary-600 font-medium mb-2">
                       {item.category}
                     </div>
 
                     {/* Title and Subtitle */}
-                    <h3 className="text-xl font-display font-bold text-secondary-900 mb-2">
+                    <h3 className="text-base sm:text-lg md:text-xl font-display font-bold text-secondary-900 mb-2 leading-tight">
                       {item.title}
                     </h3>
-                    <h4 className="text-lg font-semibold text-primary-600 mb-3">
+                    <h4 className="text-sm sm:text-base md:text-lg font-semibold text-primary-600 mb-3 leading-tight">
                       {item.subtitle}
                     </h4>
 
                     {/* Description */}
-                    <p className="text-secondary-600 mb-4 leading-relaxed">
+                    <p className="text-secondary-600 mb-4 leading-relaxed text-sm sm:text-base">
                       {item.description}
                     </p>
 
                     {/* Achievements */}
                     <div className="space-y-2">
-                      <h5 className="font-semibold text-secondary-800 text-sm">Key Achievements:</h5>
-                      <ul className="space-y-1">
+                      <h5 className="font-semibold text-secondary-800 text-sm sm:text-base">Key Achievements:</h5>
+                      <ul className="space-y-1.5">
                         {item.achievements.map((achievement, idx) => (
-                          <li key={idx} className="flex items-start space-x-2 text-sm text-secondary-600">
-                            <span className="text-primary-500 mt-1">•</span>
-                            <span>{achievement}</span>
+                          <li key={idx} className="flex items-start space-x-2 text-sm sm:text-base text-secondary-600">
+                            <span className="text-primary-500 mt-1 flex-shrink-0">•</span>
+                            <span className="leading-relaxed">{achievement}</span>
                           </li>
                         ))}
                       </ul>
@@ -215,23 +215,23 @@ const Timeline = () => {
         </div>
 
         {/* Current Status */}
-        <div className="mt-16 text-center">
-          <div className="card p-8 bg-gradient-to-r from-primary-50 to-secondary-50">
-            <h3 className="text-2xl font-display font-bold text-secondary-900 mb-4">
+        <div className="mt-12 sm:mt-16 text-center">
+          <div className="card p-6 sm:p-8 lg:p-10 bg-gradient-to-r from-primary-50 to-secondary-50 mx-2 sm:mx-0">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-display font-bold text-secondary-900 mb-6 sm:mb-8">
               Current Status
             </h3>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600">9.2</div>
-                <div className="text-secondary-600">Current CGPA</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-600">9.2</div>
+                <div className="text-secondary-600 text-sm sm:text-base mt-1">Current CGPA</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600">3rd Year</div>
-                <div className="text-secondary-600">B.Tech CSE</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-600">3rd Year</div>
+                <div className="text-secondary-600 text-sm sm:text-base mt-1">B.Tech CSE</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600">Active</div>
-                <div className="text-secondary-600">Learning & Building</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-600">Active</div>
+                <div className="text-secondary-600 text-sm sm:text-base mt-1">Learning & Building</div>
               </div>
             </div>
           </div>

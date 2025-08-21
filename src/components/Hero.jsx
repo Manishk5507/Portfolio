@@ -1,4 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  AnimatedButton, 
+  FloatingElement, 
+  MorphingBlob, 
+  ParticleBackground,
+  TypewriterText,
+  MagneticButton
+} from './AnimatedComponents';
+import { 
+  fadeInUp, 
+  fadeInLeft, 
+  fadeInRight, 
+  floatingAnimation,
+  rotateAnimation,
+  pulseAnimation
+} from '../utils/animations';
 
 const Hero = ({ data, social }) => {
   const [currentTitle, setCurrentTitle] = useState(0);
@@ -48,111 +65,227 @@ const Hero = ({ data, social }) => {
       <div className="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800"></div>
       <div className="absolute inset-0 bg-black/20"></div>
       
+      {/* Particle Background */}
+      <ParticleBackground particleCount={30} />
+      
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-bounce-slow"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-2xl animate-pulse"></div>
+        <FloatingElement className="absolute -top-40 -right-40">
+          <MorphingBlob className="w-80 h-80 blur-3xl" />
+        </FloatingElement>
+        
+        <motion.div 
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/5 rounded-full blur-3xl"
+          {...floatingAnimation}
+          style={{ animationDelay: '1s' }}
+        />
+        
+        <motion.div 
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-2xl"
+          {...pulseAnimation}
+        />
+        
+        {/* Geometric shapes */}
+        <motion.div
+          className="absolute top-20 left-20 w-4 h-4 bg-white/20 rotate-45"
+          {...rotateAnimation}
+        />
+        <motion.div
+          className="absolute bottom-32 right-32 w-6 h-6 bg-white/15 rounded-full"
+          {...floatingAnimation}
+          style={{ animationDelay: '2s' }}
+        />
       </div>
 
-      <div className="container-custom relative z-10 px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-80px)] py-8 lg:py-0">
+      <div className="container-custom relative z-10 px-3 sm:px-4 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center min-h-[calc(100vh-60px)] sm:min-h-[calc(100vh-80px)] py-6 sm:py-8 lg:py-0">
           {/* Content */}
-          <div className="text-white space-y-6 lg:space-y-8 animate-slide-up order-2 lg:order-1">
-            <div className="space-y-3 lg:space-y-4">
-              <p className="text-base sm:text-lg font-medium text-white/80 animate-fade-in">
+          <motion.div 
+            className="text-white space-y-4 sm:space-y-6 lg:space-y-8 order-2 lg:order-1"
+            {...fadeInLeft}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="space-y-2 sm:space-y-3 lg:space-y-4">
+              <motion.p 
+                className="text-sm sm:text-base lg:text-lg font-medium text-white/80"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 👋 Hello, I'm
-              </p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold leading-tight">
+              </motion.p>
+              
+              <motion.h1 
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-display font-bold leading-tight"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
                 <span className="text-gradient bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
                   {data.name}
                 </span>
-              </h1>
-              <div className="h-12 sm:h-14 lg:h-16 flex items-center">
-                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-white/90">
-                  <span className="inline-block animate-fade-in">
-                    {titles[currentTitle]}
-                  </span>
+              </motion.h1>
+              
+              <div className="h-10 sm:h-12 lg:h-14 xl:h-16 flex items-center">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-white/90">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={currentTitle}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.5 }}
+                      className="inline-block"
+                    >
+                      {titles[currentTitle]}
+                    </motion.span>
+                  </AnimatePresence>
                 </h2>
               </div>
             </div>
 
-            <p className="text-base sm:text-lg lg:text-xl text-white/80 leading-relaxed max-w-2xl">
+            <motion.p 
+              className="text-sm sm:text-base lg:text-lg xl:text-xl text-white/80 leading-relaxed max-w-2xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+            >
               {data.bio}
-            </p>
+            </motion.p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <button
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+            >
+              <MagneticButton
                 onClick={() => scrollToSection('projects')}
-                className="btn-primary bg-white text-primary-600 hover:bg-white/90 hover:text-primary-700 text-sm sm:text-base"
+                className="btn-primary bg-white text-primary-600 hover:bg-white/90 hover:text-primary-700 text-sm sm:text-base py-2.5 sm:py-3 px-4 sm:px-6"
               >
                 View My Work
-              </button>
-              <button
+              </MagneticButton>
+              <MagneticButton
                 onClick={() => scrollToSection('contact')}
-                className="btn-secondary border-white text-white hover:bg-white hover:text-primary-600 text-sm sm:text-base"
+                className="btn-secondary border-white text-white hover:bg-white hover:text-primary-600 text-sm sm:text-base py-2.5 sm:py-3 px-4 sm:px-6"
               >
                 Get In Touch
-              </button>
-            </div>
+              </MagneticButton>
+            </motion.div>
 
             {/* Social Links */}
-            <div className="flex space-x-4 sm:space-x-6 pt-2 lg:pt-4">
-              {Object.entries(social).map(([platform, url]) => (
+            <motion.div 
+              className="flex space-x-3 sm:space-x-4 lg:space-x-6 pt-2 lg:pt-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
+            >
+              {Object.entries(social).map(([platform, url], index) => (
                 socialIcons[platform] && (
-                  <a
+                  <motion.a
                     key={platform}
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/70 hover:text-white transform hover:scale-110 transition-all duration-300 w-6 h-6 sm:w-7 sm:h-7"
+                    className="text-white/70 hover:text-white w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7"
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: 5,
+                      transition: { duration: 0.2 }
+                    }}
+                    whileTap={{ scale: 0.9 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 1.6 + index * 0.1 }}
                   >
                     {socialIcons[platform]}
-                  </a>
+                  </motion.a>
                 )
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Profile Image */}
-          <div className="relative animate-slide-up order-1 lg:order-2" style={{ animationDelay: '0.2s' }}>
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 mx-auto">
+          <motion.div 
+            className="relative order-1 lg:order-2"
+            {...fadeInRight}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 mx-auto">
               {/* Decorative rings */}
-              <div className="absolute inset-0 rounded-full border-2 border-white/20 animate-spin" style={{ animationDuration: '20s' }}></div>
-              <div className="absolute inset-3 sm:inset-4 rounded-full border-2 border-white/10 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
+              <motion.div 
+                className="absolute inset-0 rounded-full border-2 border-white/20"
+                {...rotateAnimation}
+                style={{ animationDuration: '20s' }}
+              />
+              <motion.div 
+                className="absolute inset-2 sm:inset-3 lg:inset-4 rounded-full border-2 border-white/10"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              />
               
               {/* Profile image */}
-              <div className="absolute inset-6 sm:inset-8 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm">
-                <img
+              <motion.div 
+                className="absolute inset-4 sm:inset-6 lg:inset-8 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.img
                   src={data.avatar}
                   alt={data.name}
                   className="w-full h-full object-cover"
+                  initial={{ scale: 1.1, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
                 />
-              </div>
+              </motion.div>
               
               {/* Floating elements */}
-              <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center animate-bounce">
-                <span className="text-xl sm:text-2xl">⚛️</span>
-              </div>
-              <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center animate-bounce" style={{ animationDelay: '0.5s' }}>
-                <span className="text-xl sm:text-2xl">💻</span>
-              </div>
+              <FloatingElement className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 lg:-top-4 lg:-right-4">
+                <motion.div 
+                  className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white/20 rounded-full flex items-center justify-center"
+                  whileHover={{ scale: 1.2, rotate: 180 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <span className="text-lg sm:text-xl lg:text-2xl">⚛️</span>
+                </motion.div>
+              </FloatingElement>
+              
+              <FloatingElement className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 lg:-bottom-4 lg:-left-4">
+                <motion.div 
+                  className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white/20 rounded-full flex items-center justify-center"
+                  whileHover={{ scale: 1.2, rotate: -180 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ animationDelay: '0.5s' }}
+                >
+                  <span className="text-lg sm:text-xl lg:text-2xl">💻</span>
+                </motion.div>
+              </FloatingElement>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <button
+        <motion.div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 2.0 }}
+        >
+          <motion.button
             onClick={() => scrollToSection('about')}
             className="text-white/70 hover:text-white transition-colors duration-300"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

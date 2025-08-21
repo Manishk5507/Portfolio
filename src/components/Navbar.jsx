@@ -28,11 +28,11 @@ const Navbar = ({ activeSection }) => {
         ? 'bg-white/95 backdrop-blur-md shadow-lg' 
         : 'bg-transparent'
     }`}>
-      <div className="container-custom px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-3 sm:py-4">
+      <div className="container-custom px-3 sm:px-4 lg:px-8">
+        <div className="flex items-center justify-between py-2 sm:py-3 lg:py-4">
           {/* Logo */}
           <div 
-            className="text-xl sm:text-2xl font-display font-bold cursor-pointer flex-shrink-0"
+            className="text-lg sm:text-xl lg:text-2xl font-display font-bold cursor-pointer flex-shrink-0"
             onClick={() => scrollToSection('home')}
           >
             <span className={`transition-colors duration-300 ${
@@ -84,18 +84,18 @@ const Navbar = ({ activeSection }) => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 flex-shrink-0"
+            className="lg:hidden p-1.5 sm:p-2 flex-shrink-0 relative z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
             <div className="space-y-1">
-              <div className={`w-6 h-0.5 transition-all duration-300 ${
+              <div className={`w-5 sm:w-6 h-0.5 transition-all duration-300 ${
                 isScrolled ? 'bg-secondary-600' : 'bg-white'
               } ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></div>
-              <div className={`w-6 h-0.5 transition-all duration-300 ${
+              <div className={`w-5 sm:w-6 h-0.5 transition-all duration-300 ${
                 isScrolled ? 'bg-secondary-600' : 'bg-white'
               } ${isMobileMenuOpen ? 'opacity-0' : ''}`}></div>
-              <div className={`w-6 h-0.5 transition-all duration-300 ${
+              <div className={`w-5 sm:w-6 h-0.5 transition-all duration-300 ${
                 isScrolled ? 'bg-secondary-600' : 'bg-white'
               } ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
             </div>
@@ -104,14 +104,14 @@ const Navbar = ({ activeSection }) => {
 
         {/* Mobile Menu */}
         <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-96 pb-6' : 'max-h-0'
+          isMobileMenuOpen ? 'max-h-screen pb-4 sm:pb-6' : 'max-h-0'
         }`}>
-          <div className="space-y-3 px-2">
+          <div className="space-y-2 sm:space-y-3 px-1 sm:px-2">
             {portfolioData.navigation.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href.substring(1))}
-                className={`block w-full text-left font-medium py-2 px-3 rounded-lg transition-colors duration-300 ${
+                className={`block w-full text-left font-medium py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg transition-colors duration-300 text-sm sm:text-base ${
                   activeSection === item.href.substring(1)
                     ? 'text-primary-600 bg-primary-50'
                     : isScrolled
@@ -124,7 +124,7 @@ const Navbar = ({ activeSection }) => {
             ))}
             <button
               onClick={() => scrollToSection('contact')}
-              className="w-full mt-4 bg-primary-600 text-white font-medium py-3 px-4 rounded-lg hover:bg-primary-700 transition-colors duration-300"
+              className="w-full mt-3 sm:mt-4 bg-primary-600 text-white font-medium py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg hover:bg-primary-700 transition-colors duration-300 text-sm sm:text-base"
             >
               Let's Talk
             </button>
